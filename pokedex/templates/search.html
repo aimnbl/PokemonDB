@@ -1,0 +1,41 @@
+<nav class="pad-10" aria-label="Page navigation example">
+    {% if pokemon.has_other_pages %}
+    <ul class="pagination pagination-sm">
+        {% if pokemon.has_previous %}
+        <li class="page-item" onclick="search_pokemon({{pokemon.previous_page_number}})">&laquo;</li>
+        {% else %}
+        <li class="page-item disabled"><span>&laquo;</span></li>
+        {% endif %}
+        {% for i in pokemon.paginator.page_range %}
+            {% if pokemon.number == i %}
+            <li class="page-item active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+            {% else %}
+            <li class="page-item" onclick="search_pokemon({{i}})">{{ i }}</li>
+            {% endif %}
+        {% endfor %}
+        {% if pokemon.has_next %}
+        <li class="page-item" onclick="search_pokemon({{pokemon.next_page_number}})">&raquo;</li>
+        {% else %}
+        <li class="page-item disabled"><span>&raquo;</span></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+</nav>
+
+{% if pokemon %}
+    {% for data in pokemon %}        
+    <li class="list-group-item d-flex justify-content-between align-items-center w-100">
+        <a class="btn btn-light btn-sm w-100 float" href="pokemon/?id={{data.id}}" style="text-align:left">
+            <span class="badge alert-dark">No. {{data.pokedex_no}}</span> 
+            {{ data.name }}
+            <span class="badge alert-secondary float-right">{{data.type_1.type}}</span> 
+            <span class="badge alert-secondary float-right">{{data.type_2.type}}</span>
+        </a>
+    </li>
+    {% endfor %}   
+{% else %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        No Pokemon Found
+    </li>
+{% endif %}
+
