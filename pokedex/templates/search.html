@@ -14,7 +14,7 @@
         {% for i in pokemon.paginator.page_range %}
             {% if pokemon.number == i %}
                 <li class="page-item page-link active">{{ i }}<span class="sr-only">(current)</span></li>
-            {% elif pokemon.number > i|add:"-4" and pokemon.number < i|add:"+4"%}
+            {% elif pokemon.number > i|add:"-4" and pokemon.number < i|add:"+3"%}
                 <li class="page-item page-link" onclick="search_pokemon({{ i }})">{{ i }}</li>
             {% endif %}
         {% endfor %}
