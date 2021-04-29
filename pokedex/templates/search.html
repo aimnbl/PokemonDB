@@ -42,10 +42,44 @@
             <span class="badge alert-secondary float-right">{{data.type_2.type}}</span>
         </a>
     </li>
-    {% endfor %}   
+    {% endfor %}
+   
 {% else %}
     <li class="list-group-item d-flex justify-content-between align-items-center">
         No Pokemon Found
     </li>
 {% endif %}
 
+{% if pokemon.paginator.num_pages > 1 %}
+<nav aria-label="Page navigation" style="cursor: default; max-width:357px">
+    <ul class="pagination justify-content-right pagination-sm pull-right">
+        {% if pokemon.paginator.num_pages != 1 %}
+            <li class="page-item page-link" onclick="search_pokemon('1')">First</li>
+        {% else %}
+            <li class="page-item page-link disabled">First</li>
+        {% endif %}
+        {% if pokemon.has_previous %}
+            <li class="page-item page-link" onclick="search_pokemon({{pokemon.previous_page_number}})">&laquo;</li>
+        {% else %}
+            <li class="page-item page-link disabled">&laquo;</li>
+        {% endif %}
+        {% for i in pokemon.paginator.page_range %}
+            {% if pokemon.number == i %}
+                <li class="page-item page-link active">{{ i }}<span class="sr-only">(current)</span></li>
+            {% elif pokemon.number > i|add:"-5" and pokemon.number < i|add:"+5"%}
+                <li class="page-item page-link" onclick="search_pokemon({{ i }})">{{ i }}</li>
+            {% endif %}
+        {% endfor %}
+        {% if pokemon.has_next %}
+            <li class="page-item page-link" onclick="search_pokemon({{pokemon.next_page_number}})">&raquo;</li>
+        {% else %}
+            <li class="page-item page-link disabled">&raquo;</li>
+        {% endif %}
+        {% if pokemon.paginator.num_pages != pokemon.number %}
+            <li class="page-item page-link" onclick="search_pokemon({{pokemon.paginator.num_pages}})">Last</li>
+        {% else %}
+            <li class="page-item page-link disabled">Last</li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
