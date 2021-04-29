@@ -1,5 +1,5 @@
 {% if pokemon.paginator.num_pages > 1 %}
-<nav aria-label="Page navigation" style="cursor: default">
+<nav aria-label="Page navigation" style="cursor: default; max-width:357px">
     <ul class="pagination justify-content-right pagination-sm pull-right">
         {% if pokemon.paginator.num_pages != 1 %}
             <li class="page-item page-link" onclick="search_pokemon('1')">First</li>
