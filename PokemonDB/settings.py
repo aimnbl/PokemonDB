@@ -25,7 +25,7 @@ SECRET_KEY = '=+p%3%hd(k#&#h9))c)3nx(90c$bfm@0l+mev9$_&%^&a%)q1a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['enigmatic-peak-16577.herokuapp.com/', '127.0.0.1']
 
 
 # Application definition
