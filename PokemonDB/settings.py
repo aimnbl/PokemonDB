@@ -82,16 +82,17 @@ WSGI_APPLICATION = 'PokemonDB.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'de3o7umkt7p2ia',
-        'USER': 'ijmtsqyhnofmyc',
-        'PASSWORD': '4ef8bc4d1878e6e0b2929cfabe88b76ccbeed19369db3396948813208c066ac2 ',
-        'HOST' : 'ec2-35-174-35-242.compute-1.amazonaws.com',
-        'PORT' : 5432
-    }
-}
+DATABASES = {}
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'de3o7umkt7p2ia',
+#         'USER': 'ijmtsqyhnofmyc',
+#         'PASSWORD': '4ef8bc4d1878e6e0b2929cfabe88b76ccbeed19369db3396948813208c066ac2 ',
+#         'HOST' : 'ec2-35-174-35-242.compute-1.amazonaws.com',
+#         'PORT' : 5432
+#     }
+# }
+DATABASES['default'] = dj_database_url.parse('postgres://ijmtsqyhnofmyc:4ef8bc4d1878e6e0b2929cfabe88b76ccbeed19369db3396948813208c066ac2@ec2-35-174-35-242.compute-1.amazonaws.com:5432/de3o7umkt7p2ia', conn_max_age=600, ssl_require=True)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -131,5 +132,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/' 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
