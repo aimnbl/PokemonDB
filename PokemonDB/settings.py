@@ -84,13 +84,13 @@ WSGI_APPLICATION = 'PokemonDB.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pokemon',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST' : 'localhost'
+        'NAME': 'de3o7umkt7p2ia',
+        'USER': 'ijmtsqyhnofmyc',
+        'PASSWORD': '4ef8bc4d1878e6e0b2929cfabe88b76ccbeed19369db3396948813208c066ac2 ',
+        'HOST' : 'ec2-35-174-35-242.compute-1.amazonaws.com',
+        'PORT' : 5432
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
